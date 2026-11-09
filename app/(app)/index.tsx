@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Stack, useRouter } from 'expo-router';
+import { Ionicons } from '@expo/vector-icons';
 import {
   Animated,
   Easing,
@@ -136,7 +137,7 @@ export default function HomeScreen() {
   };
 
   // Waar de ogen nu staan (midden van de ogen, in schermcoördinaten)
-  // en waar ze naartoe moeten (linksboven, op de hoogte van de kleurknop).
+  // en waar ze naartoe moeten (linksboven, op de hoogte van de bovenbalk).
   const eyesCx = centerPos.x + eyesBox.x + eyesBox.w / 2;
   const eyesCy = centerPos.y + eyesBox.y + eyesBox.h / 2;
   const targetCx = spacing.lg + (eyesBox.w * EYES_SCALE) / 2;
@@ -183,8 +184,18 @@ export default function HomeScreen() {
     <View style={styles.screen}>
       <Stack.Screen options={{ headerShown: false }} />
 
-      {/* Rechtsboven: de knop die de kleurkiezer opent, met de huidige oogkleur. */}
+      {/* Rechtsboven: Info en de kleurkiezer. */}
       <View style={styles.topBar}>
+        <Pressable
+          onPress={() => router.push('/info')}
+          accessibilityRole="button"
+          accessibilityLabel="Open de infopagina over de app"
+          style={({ pressed }) => [styles.infoButton, pressed && styles.infoPressed]}
+        >
+          <Ionicons name="information-circle-outline" size={22} color={colors.text} />
+          <Text style={styles.infoText}>Info</Text>
+        </Pressable>
+
         <Pressable
           onPress={() => setPickerOpen(true)}
           accessibilityRole="button"
@@ -286,10 +297,6 @@ export default function HomeScreen() {
         selected={eyeColor}
         onSelect={setEyeColor}
         onClose={() => setPickerOpen(false)}
-        onOpenInfo={() => {
-          setPickerOpen(false);
-          router.push('/info');
-        }}
       />
     </View>
   );
@@ -304,7 +311,29 @@ const styles = StyleSheet.create({
     paddingHorizontal: spacing.lg,
   },
   topBar: {
-    alignItems: 'flex-end',
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    gap: spacing.sm,
+  },
+  infoButton: {
+    minHeight: TOUCH_TARGET,
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    paddingHorizontal: spacing.md,
+    borderRadius: radius.button,
+    backgroundColor: colors.surface,
+    borderWidth: 1,
+    borderColor: colors.surfaceBorder,
+  },
+  infoPressed: {
+    opacity: 0.7,
+  },
+  infoText: {
+    color: colors.text,
+    fontSize: 15,
+    fontWeight: '600',
   },
   colorButton: {
     minHeight: TOUCH_TARGET,
