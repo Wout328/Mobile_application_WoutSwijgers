@@ -49,3 +49,15 @@ Veel mensen vinden AI interessant, maar weten niet goed hoe ze ermee moeten comm
 - Meer emoties en interacties
 - Opslaan van gebruikersvoorkeuren
 - Extra functies zoals timers en herinneringen
+
+Reference Material
+Tijdens het ontwerpen van deze applicatie werd inspiratie gehaald uit de robotassistent EMO van LivingAI. De manier waarop EMO emoties toont via eenvoudige animaties en een herkenbaar gezichtje sluit goed aan bij het doel van deze applicatie: AI toegankelijk maken voor gebruikers die minder vertrouwd zijn met technologie.
+
+Inspiratiebron
+Website: https://living.ai/emo/
+
+Referentie-afbeelding
+
+![EMO Robot Reference](docs/images/emo_robot.png)
+
+Bron: LivingAI EMO Robot
