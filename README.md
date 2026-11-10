@@ -58,6 +58,6 @@ Website: https://living.ai/emo/
 
 Referentie-afbeelding
 
-![EMO Robot Reference](docs/images/emo_robot.png)
+![EMO Robot Reference](images/emo_robot.png)
 
 Bron: LivingAI EMO Robot
